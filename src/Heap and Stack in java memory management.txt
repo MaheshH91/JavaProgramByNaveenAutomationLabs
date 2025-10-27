@@ -1,0 +1,86 @@
+Heap and Stack in java memory management
+Here’s a **clear, simple explanation** of **Heap** and **Stack** in Java memory management:
+
+---
+
+## 1️⃣ **Stack Memory**
+
+* **What it stores:**
+
+  * Local variables
+  * Method parameters
+  * Method call information (the call stack)
+
+* **How it works:**
+
+  * Each time a method is called, a new *stack frame* is created.
+  * When the method ends, that frame is popped off automatically.
+
+* **Key features:**
+
+  * Follows **LIFO** (Last In, First Out).
+  * Very fast access.
+  * Memory is released **automatically** when a method returns.
+  * Size is limited and fixed when the program starts.
+
+* **Example:**
+
+  ```java
+  void foo() {
+      int x = 10;   // x is stored in stack
+  }
+  ```
+
+---
+
+## 2️⃣ **Heap Memory**
+
+* **What it stores:**
+
+  * All **objects** (created with `new`)
+  * Class-level (static) variables
+
+* **How it works:**
+
+  * Objects stay in the heap until **no reference** points to them.
+  * The **Garbage Collector (GC)** eventually frees that memory.
+
+* **Key features:**
+
+  * Shared by **all threads**.
+  * Larger and more flexible than the stack.
+  * Slower to access than stack memory.
+  * Managed automatically by Java’s GC.
+
+* **Example:**
+
+  ```java
+  class Person {}
+  Person p = new Person(); // 'p' is a stack reference, object is in heap
+  ```
+
+---
+
+## 3️⃣ **Relationship**
+
+* A **stack variable** holds a *reference* (like an address) to an object stored in the **heap**.
+* When the reference goes out of scope and no other reference exists, the object becomes eligible for garbage collection.
+
+---
+
+### Quick Comparison Table
+
+| Aspect        | Stack                         | Heap                     |
+| ------------- | ----------------------------- | ------------------------ |
+| Stores        | Method calls, local variables | Objects, class variables |
+| Access Speed  | Faster                        | Slower                   |
+| Managed by    | JVM automatically (per call)  | Garbage Collector        |
+| Scope         | Exists until method finishes  | Exists until GC frees it |
+| Thread safety | Each thread has its own stack | Shared among all threads |
+
+---
+
+✅ **Summary:**
+
+* **Stack** = short-lived, method-level data, auto-cleaned.
+* **Heap** = long-lived objects, managed by the Garbage Collector.

@@ -1,0 +1,37 @@
+/ **
+* Java Static Block Interview Questions:
+
+Q1. Explain static blocks in Java ?
+
+Q2. How can we run a java program without making any object?
+
+Q3. Similarity and Difference between static block and static method ?
+
+Q4. How can we create objects if we make the constructor private ?
+
+Q5. Is it possible to compile and run a Java program without writing main( ) method?
+
+Q6. Can we initialize member variables within static block ?
+
+
+### ✅ Java Static Block Interview Answers (Short Form)
+
+**Q1. Explain static blocks in Java?**  
+Static blocks run once when the class is loaded. They're used to initialize static variables or perform setup logic.
+
+**Q2. How can we run a Java program without making any object?**  
+Use a static block or static method. Static blocks execute automatically when the class loads.
+
+**Q3. Similarity and Difference between static block and static method?**  
+Both belong to the class.  
+- Static block: runs automatically, no parameters, no return.  
+- Static method: runs when called, can take parameters and return values.
+
+**Q4. How can we create objects if we make the constructor private?**  
+Use a static factory method or Singleton pattern inside the class.
+
+**Q5. Is it possible to compile and run a Java program without writing `main()` method?**  
+Yes, using a static block with `System.exit(0)` — but only in older JVMs or special contexts like servlets or tests.
+
+**Q6. Can we initialize member variables within static block?**  
+Only static variables can be initialized in static blocks. Instance variables need constructors or instance blocks.
