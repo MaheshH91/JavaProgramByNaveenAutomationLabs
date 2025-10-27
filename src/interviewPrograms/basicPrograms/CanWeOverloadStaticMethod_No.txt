@@ -1,0 +1,51 @@
+Great question, Mahesh! Here's the clear reason why **static methods cannot be overridden in Java**:
+
+---
+
+### ⚙️ **Core Reason: Static Methods Belong to the Class, Not the Object**
+
+- **Static methods are resolved at compile time**, based on the **reference type**, not the actual object.
+- They are **not part of the object's runtime behavior**, so **polymorphism doesn't apply**.
+- Overriding is a **runtime concept**—it depends on which object is being referred to, not just the reference type.
+
+---
+
+### 🔍 Example to Illustrate
+
+```java
+class Car {
+    public static void start() {
+        System.out.println("Car --- start");
+    }
+}
+
+class BMW extends Car {
+    public static void start() {
+        System.out.println("BMW --- start");
+    }
+}
+
+public class TestCar {
+    public static void main(String[] args) {
+        Car c = new BMW();
+        c.start(); // Output: Car --- start
+    }
+}
+```
+
+Even though `c` refers to a `BMW` object, the method call `c.start()` invokes `Car`'s static method because it's resolved by the **reference type (`Car`)**, not the actual object (`BMW`).
+
+---
+
+### ✅ This Is Called **Method Hiding**, Not Overriding
+
+- When a subclass defines a static method with the same signature as one in the parent class, it's **hiding** the method—not overriding it.
+- You can still call the subclass version using its class name: `BMW.start();`
+
+---
+
+### 🧠 Tip for You
+
+Since you're deep into Java and QA, this distinction is key when designing test utilities or frameworks. Static methods are great for utility logic, but they don’t support polymorphism—so avoid them in base classes if you expect dynamic behavior.
+
+Want to explore how `final`, `private`, or `static` methods behave differently in inheritance? I can show you with examples.
